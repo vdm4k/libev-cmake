@@ -30,11 +30,13 @@ add_library(ev ${EV_SRC})
 target_link_libraries (ev ${EV_LIBS})
 target_include_directories(ev PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(ev PUBLIC libev)
+target_compile_options(ev PRIVATE "-w") # no warnings
 
 add_library(ev::ev ALIAS ev)
 
 add_library(ev_static STATIC ${EV_SRC})
 target_link_libraries (ev_static ${EV_LIBS})
+target_compile_options(ev_static PRIVATE "-w") # no warnings
 target_include_directories(ev_static PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(ev_static PUBLIC libev)
 
